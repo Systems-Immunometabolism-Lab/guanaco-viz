@@ -1,0 +1,163 @@
+GUANACO Interface
+===============
+
+.. contents:: Table of contents
+   :local:
+   :depth: 2
+   :backlinks: entry
+
+Dataset Overview
+-----------
+After open the interface, the default shown section is description section and side by side  dimensional deuction, containing the size of dataset, and what metadata it has. The main view is a side-by-side Embedding plot. Both side can be coloured by metadata showed in description section and genes by the selection in the dropdown. The image below highlight how to quickly view the dataset to understand most of the information.
+
+.. image:: assets/interface1.png
+   :width: 1000
+
+Use 'Global DATA FILTER' to select and deselect cells shown in the embedding. All embeddings in .obsm will be in selection in Dimension Reduction. Note that for dimensional reduction methods that yields more than two axis. User can select at most two of them to display in selection 'X-axis','Y-axis'.
+
+Scroll the mouse to zoom in and zoom out. There are three icon in the upper right coner. camaera one is for downloading current view in .svg format. And in Pan tool mode(middle one), hold the space bar and drag the mouse to move the view. and double click to go back to default view. With lasso selection tool, user can select cells in the left embedding and pass the cells to other plots.(see more in select cell section)
+
+----
+
+Marker Genes Visualization
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+Heatmap
+
+GUANACO provide single cell level heatmap, supporting max to 50k cells. cells(columns) and gene(row) is controled by the left area. If dataset has more than 50k cells, it will binning them. Provide three two transformation methods, log and z-score. When using z-score, for better visualization , we used 99 percentile.
+
+GUANACO support two annotations and one of them can be continous metadata like pseudotime. In default, with two annoations, the cells are first clustered by first annotatioin and then within the first annotation, cells are clustered by the second annoation. But if the second annotation isn continuse, it will prioritize the order by continuse variable.
+
+.. image:: assets/heatmap.png
+   :width: 1000
+
+For graphich setting, the discre colormap for the first annotation is same as embedding section,and the secondary annnotation colormap can be determined by dropdown. We also offer 96 continous colormap for heatmap. It is recommend to use Sequential Color scales for raw and log data, and use Built-In Diverging Color scales to for z-score data to hilight the difference:
+
+.. image:: assets/z-score_heatmap.png
+   :width: 1000
+
+More color information can be found in color section.
+
+
+Violin plot
+
+GUANACO provide two types of violins: stacked and split/grouped. The first one is for visualizing mutilple markers and the second one serves more to group comparison.
+
+.. image:: assets/violin1.png
+   :width: 1000
+
+Again the color is consistent with the shown in embeddings. Here we have the option to show the box plot inside of the violin and scatter dot beside it. Note showing all scatter points for large dataset and with multiple genes could be slow.
+
+
+Split/grouped violin is very helpful for comparing different groups. It allows for a clear visualization of the distribution of each group. We provide 4 mode ro analysis the data.
+
+* Mode1: One metadata only. It only consider the first metadata for grouping. If there's only two groups, we offer manm-Witney U test and T test. For more than 2 groups, we provide KW test and ANNOVA.
+
+* Mode2: Facet by first metadata and compare the second metadata. It will show the first metadata as facet and the second metadata as group. If there's only two groups in the seocnd metdata, we offer manm-Witney U test and T test and show the split violin view. For more than 2 groups, we provide KW test and ANNOVA, and show grouped violin view.
+
+* Mode3: Linear Mode. We assume obs2 as a confounder: expression ~ obs1 + obs2. For non nested two metadata, for example, treatment and gender.
+
+* Mode4: Mixed Model. Mixed model treating obs2 as random effect: expression ~ meta1 + (1|obs2). Useful for heriachy structure data, like metadata1 = condition, metadata2 = patient. patient is nested with conditioin.
+
+Example for Mode2:
+
+Target question: For each cell type, is there a difference in the expression between bacth(condition)?
+
+.. image:: assets/violin2.png
+   :width: 1000
+
+Example for Mode3:
+
+Target quesrtion: Which metadata contributes more to the group differentce.
+
+.. image:: assets/violin2_mode3.png
+   :width: 1000
+
+Dot plot
+
+Dot plot provide aggreated expression for each gene across group. Useful to exmaine and show marker gene expression. GUANACO provide two plot typr to show aggreated(pseudo--bulk level) expressioni. One is dotplot and the otehr is matrix plot(pseudo level heatmap).
+Standarization is Useful for visualization to make all genes compareble. It force all genes to have the same scale(0-1).
+
+.. image:: assets/dotplot.png
+   :width: 1000
+
+Stacked bar plot
+
+stacked bar is to understand cell composition. The annotation and labels in the left decide stakced layer and the cell info inside of the stakced bar tab deterimine the x axis. User can choose to see the proportion and count. For more detialed information, use hover.
+the order of groups can be changed by drag columns header under the stacked bar plot.
+
+.. image:: assets/bar.png
+   :width: 1000
+
+Pseudotime plot
+
+Plot cells along the pseudotime trajectory. Or any other continuous metadata. A GLM smooth line is fitted to show the overall trend.
+
+  The Pseudotime Plot is a specialized visualization tool for analyzing
+  gene expression dynamics along a cellular differentiation trajectory.
+  Here's what it does:
+
+  What is Pseudotime?
+
+  Pseudotime represents a computational ordering of cells along a
+  biological process (like differentiation or cell fate decisions), where
+  cells are arranged from an early state to a later state based on their
+  gene expression profiles.
+
+  Key Features of the Plot:
+
+  1. Gene Expression Trajectories: Shows how selected genes' expression
+  levels change as cells progress through pseudotime, helping identify
+  genes that drive or mark cellular transitions.
+  2. Multiple Gene Comparison: Displays multiple genes in stacked subplots,
+   allowing comparison of expression patterns across different genes along
+  the same trajectory.
+  3. Smoothed Curves: Overlays polynomial regression curves (black lines)
+  on the scattered expression data to highlight overall trends and patterns
+   in gene expression dynamics.
+  4. Group-based Coloring: If a grouping variable is selected (like cell
+  type or cluster), points are colored by group to show how different cell
+  populations distribute along the trajectory.
+
+  Interactive Controls:
+
+  - Minimum Expression Threshold: Filters out cells with low expression
+  (0-5 scale) to focus on cells actively expressing the genes
+  - Transformation Options:
+    - None: Raw expression values
+    - Log: Log-transformed for better visualization of wide-ranging values
+    - Z-score: Standardized values to compare genes on the same scale
+  - Pseudotime Column Selection: Choose which pseudotime calculation to use
+   if multiple are available
+
+  Use Cases:
+
+  - Identifying genes that turn on/off during differentiation
+  - Finding marker genes for transitional cell states
+  - Validating computational trajectory inference
+  - Understanding the temporal order of gene regulatory events
+
+  The plot automatically handles missing genes, creates responsive
+  visualizations scaled to the number of genes selected, and provides
+  exportable high-resolution images for publication.
+.. image:: assets/pseudotime.png
+   :width: 1000
+
+
+Igv browser
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+Select cells
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+Lasso selection
+
+Note, legend is just for viewing, not for selection
+
+Export selected subgroup
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+.h5ad
+
+CellID
