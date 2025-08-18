@@ -4,7 +4,7 @@ Instruction for Using GUANACO
 .. image:: ../assets/configguanaco.png
    :width: 100
 
-In this section, we describe how to create a configuration file and run GUANACO using both the Python package and Docker versions, on a local machine as well as on a server.
+In this section, we will show how to make your config file and run it with python package version and docker version of guanaco in both local machine and in server.
 
 .. toctree::
    :maxdepth: 2

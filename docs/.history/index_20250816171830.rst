@@ -7,5 +7,6 @@ GUANACO (Graphical Unified Analysis and Navigation of Cellular Omics) is a Pytho
    :maxdepth: 2
    :caption: Contents
 
+   installation
    getting-started
    deployment/index

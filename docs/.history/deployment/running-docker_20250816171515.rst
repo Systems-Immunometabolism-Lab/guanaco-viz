@@ -109,7 +109,7 @@ Once the files are uploaded, run the following command:
    docker run -p 8080:8080 \
    -v {directory of your data}:/app/data \
    -v {your json file}.json:/app/config.json \
-    systemsimmunometabolismlab/guanaco-viz
+   systemimmunometabolism/guanaco
 
 Or, if docker is not added to user group
 
@@ -118,7 +118,7 @@ Or, if docker is not added to user group
    sudo docker run -p 8080:8080 \
    -v {directory of your data}:/app/data \
    -v {your json file}.json:/app/config.json \
-    systemsimmunometabolismlab/guanaco-viz
+   systemimmunometabolism/guanaco
 
-The application will be running in http://instance-public-ip:8080/ (or the url the IP is mapped to)
+The application will be running in http://<instance-public-ip>:8080/ (or the url the IP is mapped to)
 

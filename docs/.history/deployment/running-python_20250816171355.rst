@@ -19,6 +19,8 @@ Step 1. Clone the repository
 
 It is advised to keep the Json file, and data inside this folder
 
+|
+
 Step 2. Create a virtual environment for python
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -55,6 +57,40 @@ Or For Windows
    conda create -n guanaco-env
    
    conda activate guanaco-env
+
+|
+
+**If the user is using Pixi follow the following commands:**
+
+.. code-block:: bash
+
+   python –m venv pixienv
+
+Or (depending on the python and OS version)
+
+.. code-block:: bash
+
+   python3 –m venv pixienv
+
+|
+
+.. code-block:: bash
+
+   source pixienv/bin/activate
+
+Or For Windows
+
+.. code-block:: bash
+
+   pixienv\Scripts\activate
+
+or
+
+.. code-block:: bash
+
+   pixienv\Scripts\Activate.ps1
+
+|
 
 Step 3. Install from local directory
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -184,6 +220,34 @@ Or, if the instance default python is lower than 3.10, it is recommended to inst
    conda create -n guanaco-env
    
    conda activate guanaco-env
+
+|
+
+**If the user is using Pixi follow the following commands:**
+
+.. code-block:: bash
+
+   python –m venv pixienv
+
+Or (depending on the python and OS version)
+
+.. code-block:: bash
+
+   python3 –m venv pixienv
+
+|
+
+.. code-block:: bash
+
+   source pixienv/bin/activate
+
+Or For Windows
+
+.. code-block:: bash
+
+   pixienv\Scripts\activate
+
+|
 
 Step 3. Install from local directory
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -1,4 +1,4 @@
-Introduction to GUANACO Interface
+GUANACO Interface
 =================
 
 .. contents::
