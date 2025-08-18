@@ -18,7 +18,7 @@
 
 <img alt="figure4_v5" src="figure4_v5.png" />
 
-Example Interface 👉 [Launch the interactive demo](https://your-demo-link.com)
+Example Interface 👉 [Launch the interactive demo](https://guanaco-demo.chen-sysimeta-lab.com/)
 
 
 ## Installation
