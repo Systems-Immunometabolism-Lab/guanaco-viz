@@ -18,12 +18,12 @@ scatter_config = {
         'filename': 'annotation_scatter'
     },
     'displaylogo': False,
-    'scrollZoom': False,  # Disable scroll to zoom
+    'scrollZoom': True,  # Enable scroll to zoom
     'dragmode': 'pan',   # Default drag mode is pan
     'doubleClick': 'reset',  # Double click to reset zoom
     'showTips': False,  # Reduce hover updates
     'frameMargins': 0,  # Reduce margin calculations
-    'modeBarButtonsToRemove': ['select', 'autoScale2d', 'zoomIn2d', 'zoomOut2d', 'zoom', 'resetScale2d'],
+    'modeBarButtonsToRemove': ['select', 'zoom2d', 'autoScale2d', 'zoomIn2d', 'zoomOut2d', 'zoom', 'resetScale2d'],
     'modeBarButtonsToAdd': ['select2d', 'lasso2d', 'pan2d']  # Selection tools for cell selection
 }
 
@@ -36,12 +36,13 @@ gene_scatter_config = {
         'filename': 'gene_scatter'
     },
     'displaylogo': False,
-    'scrollZoom': False,  # Disable scroll to zoom
+    'scrollZoom': True,  # Enable scroll to zoom
     'dragmode': 'pan',   # Default drag mode is pan
     'doubleClick': 'reset',  # Double click to reset zoom
     'showTips': False,  # Reduce hover updates
     'frameMargins': 0,  # Reduce margin calculations
-    'modeBarButtonsToRemove': ['lasso2d','select', 'select2d', 'autoScale2d', 'zoomIn2d', 'zoomOut2d', 'zoom', 'resetScale2d'],
+    'modeBarButtonsToRemove': ['lasso2d','select', 'select2d', 'zoom2d', 'autoScale2d', 'zoomIn2d', 'zoomOut2d', 'zoom', 'resetScale2d'],
+    'modeBarButtonsToAdd': []  # No selection tools, just pan and download
 }
 
 # Debounced scatter config - use this for callbacks that need debouncing

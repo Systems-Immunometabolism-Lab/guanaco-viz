@@ -1,6 +1,8 @@
 import numpy as np
 import pandas as pd
 from scipy.sparse import issparse
+from functools import lru_cache
+import hashlib
 import time
 import gc
 
@@ -192,6 +194,7 @@ def extract_multiple_genes(adata, genes, layer=None, use_raw=False):
     
     return df
 
+
 def apply_transformation(expr, method='log1p', copy=True, clip_percentile=99):
     if copy:
         expr = expr.copy()
@@ -214,16 +217,6 @@ def apply_transformation(expr, method='log1p', copy=True, clip_percentile=99):
         expr = np.log1p(expr)
 
     return expr
-
-
-def get_expression_percentiles(expr, percentiles=[0, 25, 50, 75, 95, 99, 100]):
-    """
-    Get percentile values for expression data.
-    
-    Useful for setting vmin/vmax in plots.
-    """
-    return np.percentile(expr[expr > 0] if len(expr[expr > 0]) > 0 else expr, percentiles)
-
 
 # Global cache instance
 _gene_cache = GeneExpressionCache()

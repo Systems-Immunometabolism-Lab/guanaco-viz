@@ -1,7 +1,7 @@
 from dash import dcc, html
 import dash_bootstrap_components as dbc
 import plotly.express as px
-from guanaco.pages.single_cell.config import common_config
+from guanaco.config import common_config
 import dash_draggable
 
 # Get the available color scales
@@ -45,7 +45,7 @@ def generate_dotplot_layout(prefix):
                 {'label': 'None', 'value': 'None'},
                 {'label': 'Log', 'value': 'log'}
             ],
-            value='log',
+            value='None',
             inline=True,
             style={'marginBottom': '10px'}
         )
