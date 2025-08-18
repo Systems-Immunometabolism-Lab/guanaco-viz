@@ -25,8 +25,8 @@ Example Interface 👉 [Launch the interactive demo](https://your-demo-link.com)
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/Systems-Immunometabolism-Lab/GUANACO_updated
-cd GUANACO_updated
+[git clone https://github.com/Systems-Immunometabolism-Lab/GUANACO_updated](https://github.com/Systems-Immunometabolism-Lab/guanaco-viz.git)
+cd guanaco-viz
 ```
 
 ### 2. Install from local directory
